@@ -8,16 +8,29 @@ function createCell(cell) {
 }
 
 function createRow(data, number = '') {
+  const resizer = number ?
+      `<div class="row-resize" data-resize="row"></div>` : '';
+
   return `
       <div class="row">
-        <div class="row-info">${number}</div>
-        <div class="row-data">${data}</div>
+        <div class="row-info">
+            ${number}
+            ${resizer}
+        </div>
+        <div class="row-data">
+            ${data}
+        </div>
       </div>
   `
 }
 
 function createCol(col) {
-  return `<div class="column">${col}</div>`;
+  return `
+      <div class="column">
+        ${col}
+        <div class="col-resize" data-resize="col"></div>
+      </div>
+  `;
 }
 
 export function createTable(rowsCount = 15) {
@@ -40,8 +53,6 @@ export function createTable(rowsCount = 15) {
 
     rows.push(createRow(cells, i + 1))
   }
-
-  console.log(rows)
 
   return rows.join('')
 }
