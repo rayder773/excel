@@ -76,7 +76,7 @@
     top: 0;
     opacity: 0;
 
-    &:hover {
+    &:hover, &:active {
       opacity: 1;
       cursor: col-resize;
     }
@@ -94,6 +94,21 @@
       opacity: 1;
       cursor: row-resize;
     }
+
+    &:focus {}
   }
 
+  .resize-pressed {
+    &:before {
+      width: 2px;
+      height: 400px;
+      background: blue;
+      content: "";
+      position: absolute;
+      display: block;
+      bottom: -400px;
+      left: 2px;
+      z-index: 2;
+    }
+  }
 }
